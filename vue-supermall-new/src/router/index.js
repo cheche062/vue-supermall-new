@@ -10,6 +10,9 @@ const routes = [
   {
     path: "/home",
     component: () => import('views/Home/Home'),
+    meta: {
+      title: "首页"
+    },
     children: [
       {
         path: "",
@@ -27,15 +30,32 @@ const routes = [
   },
   {
     path: "/about",
-    component: () => import('views/About/About')
+    component: () => import('views/About/About'),
+    meta: {
+      title: "关于"
+    },
+    beforeEnter(to, from, next) {
+      console.log("进入关于页面啦");
+      
+
+      next()
+    }
   },
   {
     path: "/user/:abc",
-    component: () => import('views/User/User')
+    component: () => import('views/User/User'),
+    meta: {
+      title: "用户"
+    },
+
   },
+
   {
     path: "/profile",
-    component: () => import('views/Profile/Profile')
+    component: () => import('views/Profile/Profile'),
+    meta: {
+      title: "我的"
+    },
   }
 ]
 
@@ -45,4 +65,11 @@ const router = new VueRouter({
   mode: 'history'
 })
 
+router.beforeEach((to, from, next) => {
+  document.title = to.matched[0].meta.title
+
+  next()
+})
+
+ 
 export default router

@@ -1,18 +1,22 @@
 <template>
   <div id="app">
     <router-link to="/home" tag="button">首页</router-link>
-    <router-link to="/about">关于</router-link>
-    <router-link :to="'/user/' + userId">用户</router-link>
+    <router-link to="/about" tag="button">关于</router-link>
+    <router-link :to="'/user/' + userId" tag="button">用户</router-link>
     <!-- <router-link :to="{path: '/profile', query: {name:'cheche', age: '18'}}"> 个人档案</router-link>  -->
 
     <button @click="hanldeToProfile">个人档案</button>
-    <router-view></router-view>
+
+    <keep-alive exclude=""> 
+      <router-view></router-view>
+    </keep-alive>
+
   </div>
 </template>
-
+ 
 <script>
 
-export default {
+export default { 
   name: 'app',
   components: {
 
@@ -24,7 +28,7 @@ export default {
   },
   methods: {
     handleHome() {
-      window.console.log('home');
+      console.log('home');
       this.$router.push('/home')
       
     },
@@ -42,7 +46,7 @@ export default {
         }
       })
     }
-  }
+  }  
 }
 </script>
 
