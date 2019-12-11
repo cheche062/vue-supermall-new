@@ -1,16 +1,21 @@
 <template>
-  <div>
-    Home
-    <router-link to="/home/news">新闻</router-link>
-    <router-link to="/home/message">消息</router-link>
-
-    <router-view></router-view>
+  <div id="home">
+    <nav-bar class="home-nav">
+      <div slot="center">购物街</div>
+    </nav-bar>
   </div>
 </template>
 
 <script>
+import NavBar from 'components/common/navbar/NavBar'
+import {getHomeMultidata} from 'network/home'
+
+
 export default {
   name: "home",
+  components: {
+    NavBar
+  },
   data() {
     return {
       path: "/home/news"
@@ -18,6 +23,12 @@ export default {
   },
   created() {
     console.log("home created");
+
+    getHomeMultidata().then((res) => {
+      console.log(res)
+    })
+
+
   },
   mounted() {
     console.log("home mounted");
@@ -28,11 +39,12 @@ export default {
   destroyed() {
     console.log("home destroy");
   },
-
-
-  
 };
 </script>
 
-<style>
+<style scoped>
+.home-nav{
+  background-color: var(--color-tint);
+  color: #fff;
+}
 </style>

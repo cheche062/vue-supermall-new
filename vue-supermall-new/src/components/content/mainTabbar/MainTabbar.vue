@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <tab-bar>
-      <tab-bar-item
-        v-for="(item, index) in tabList"
-        :key="index"
-        :index="index"
-        :item="item"
-        :isSelectIndex="isSelectIndex"
-        @onitemtap="handleItem"
-      ></tab-bar-item>
-    </tab-bar>
-  </div>
+  <tab-bar>
+    <tab-bar-item
+      v-for="(item, index) in tabList"
+      :key="index"
+      :index="index"
+      :item="item"
+      :isSelectIndex="isSelectIndex"
+      @onitemtap="handleItem"
+    ></tab-bar-item>
+  </tab-bar>
 </template>
 
 <script>
@@ -42,5 +40,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>
