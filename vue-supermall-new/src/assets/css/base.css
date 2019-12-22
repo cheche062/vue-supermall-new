@@ -28,6 +28,10 @@ body {
   width: 100vw;
 }
 
+html, body{
+  height: 100%;
+}
+
 a {
   color: var(--color-text);
   text-decoration: none;
